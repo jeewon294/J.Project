@@ -18,4 +18,8 @@ public class UserRepository {
         users.add(new UserDTO("kim","test3","1234"));
     }
 
+    public UserDTO insertUser(UserDTO user){
+        users.add(user);
+        return user;
+    }
 }
