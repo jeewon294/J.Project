@@ -4,6 +4,7 @@ import com.example.usertest.dto.UserDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class UserRepository {
@@ -21,5 +22,28 @@ public class UserRepository {
     public UserDTO insertUser(UserDTO user){
         users.add(user);
         return user;
+    }
+
+    public List<UserDTO> getAllUsers(){
+        return users;
+    }
+
+    public UserDTO getUsersByUserId(String userId){
+        return users.stream()
+                .filter(userDTO -> userDTO.getUserId().equals(userId))
+                .findAny()
+                .orElse(new UserDTO("","",""));
+    }
+
+    public void updateUserPw(String userId, UserDTO user){
+        users.stream()
+                .filter(userDTO -> userDTO.getUserId().equals(userId))
+                .findAny()
+                .orElse(new UserDTO("","",""))
+                .setUserPw(user.getUserPw());
+    }
+
+    public void deleteUser(String userId){
+        users.removeIf(userDTO -> userDTO.getUserId().equals(userId));
     }
 }
