@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Kakao sing up</h1>
+    <span th:if=${memberid==null}>
+        <a href="https://kauth.kakao.com//oauth/authorize?client_id=8906cd673a9b7d744a323958cde2df99&redirect_uri=http://localhost:7070/login&response_type=code">
+            <img src = "img/kakao_login_medium_narrow.png">
+        </a>
+    </span>
+    <span th:if="${memberid==null}">
+        <form name="lgout" action="http://localhost:7070/logout">
+            <input type="submit" value="로그아웃">
+        </form>
+    </span>
+</body>
+</html>
